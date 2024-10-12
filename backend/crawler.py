@@ -36,6 +36,10 @@ async def process_batch(
             crud.update_page(session=db_session, db_page=page)
             fetch_urls += destination_links
 
+        for url in fetch_urls:
+            link = models.LinkCreate(source=page.url,destination=url)
+            crud.create_link(session=db_session,link_create=link)
+
         db_session.close()
 
         fetch_urls = list(set(fetch_urls))

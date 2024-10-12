@@ -1,5 +1,5 @@
 from datetime import datetime
-from models import Page, PageCreate
+from models import Page, PageCreate, Link, LinkCreate
 from sqlmodel import Session
 
 
@@ -31,3 +31,12 @@ def update_page(*, session: Session, db_page: Page) -> Page:
     session.refresh(db_page)
 
     return db_page
+
+
+def create_link(*,session:Session,link_create:LinkCreate)-> Link:
+
+    session.add(link_create)
+    session.commit()
+    session.refresh(link_create)
+
+    return link_create

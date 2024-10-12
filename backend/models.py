@@ -12,7 +12,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import default_settings
 
-database_url = "sqlite:///web.db"
+database_url = "sqlite:///crawl.db"
 
 engine = create_engine(database_url)
 
@@ -31,8 +31,8 @@ class Page(Base):
 class Link(Base):
     __tablename__ = "links"
     id = Column("id", Integer(), primary_key=True, autoincrement=True)
-    source = Column("source", ForeignKey(Page.id))
-    destination = Column("destination", ForeignKey(Page.id))
+    source = Column("source", ForeignKey(Page.url))
+    destination = Column("destination", ForeignKey(Page.url))
 
 
 class PageCreate(Page):
@@ -42,6 +42,8 @@ class PageCreate(Page):
 class PageUpdate(Page):
     pass
 
+class LinkCreate(Link):
+    pass
 
 Base.metadata.create_all(engine)
 
