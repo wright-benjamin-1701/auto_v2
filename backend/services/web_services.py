@@ -11,7 +11,7 @@ async def fetch_page(
         async with throttler, session.get(url) as response:
             # return HTML content
             html = await response.text()
-        return html
+        return html, url
 
     except Exception as e:
         pass

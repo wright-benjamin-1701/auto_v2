@@ -41,7 +41,6 @@ def page_df_row_to_page_update(page_df_row):
 
     page_update = PageUpdate(
         id=page_df_row["id"],
-        title=page_df_row["title"],
         url=page_df_row["url"],
         content=page_df_row["content"],
         added=page_df_row["added"],

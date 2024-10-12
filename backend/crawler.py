@@ -30,7 +30,6 @@ async def process_batch(
         pages = services.database_services.get_unprocessed_page_batch(
             db_session, settings.batch_size
         )
-        print(len(pages))
         for page in pages:
 
             destination_links = core.soup_processing.get_links_from_page(page)
@@ -42,7 +41,7 @@ async def process_batch(
         fetch_urls = list(set(fetch_urls))
 
         tasks = []
-        print(len(fetch_urls))
+        print(f"fetching {len(fetch_urls)} pages")
         # loop through URLs and append tasks
         for url in fetch_urls:
             if urlparse(url).netloc != netloc and internal_only:
@@ -51,17 +50,17 @@ async def process_batch(
                 tasks.append(fetch_page(session, throttler, url))
 
         # group and Execute tasks concurrently
-        htmls = await asyncio.gather(*tasks)
+        html_url_pairs = await asyncio.gather(*tasks)
 
         db_session = models.Session()
         # todo: batch insert, skip names gracefully
-        for url, html in zip(fetch_urls, htmls):
+        for html, url in html_url_pairs:
 
             core.soup_processing.process_new_page(html, url, db_session)
 
         db_session.close()
 
-        print(f"Split time:{time.time()-t}")
+        print(f"Split time: {time.time()-t}")
 
 
 # the main program
@@ -72,7 +71,7 @@ async def main():
     )  # throttle network requests - wikipedia allows web crawling at small, slow scales
     async with aiohttp.ClientSession() as session:
 
-        for i in range(5):
+        for i in range(2):
             await process_batch(
                 throttler=throttler, settings=default_settings.default_search_settings
             )

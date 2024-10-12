@@ -23,7 +23,6 @@ class Page(Base):
     __tablename__ = "pages"
     id = Column("id", Integer(), primary_key=True, autoincrement=True)
     url = Column("url", String(), index=True, unique=True)
-    title = Column("title", String())
     content = Column("content", Text())
     added = Column("added", DateTime())
     updated = Column("updated", DateTime())
@@ -51,12 +50,10 @@ session = Session()
 
 default_page = PageCreate(
     url=default_settings.default_search_settings.starting_url,
-    title="",
     added=datetime.now(),
     content=default_settings.default_search_settings.starting_content,
 )
-# The line `default_page = Page(url=default_search_settings.starting_url, title='',
-# added=datetime.now())` is creating an instance of the `Page` class with specific attribute values.
+
 try:
     db_obj = default_page
     db_obj.added = datetime.now()
