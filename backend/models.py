@@ -10,7 +10,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from settings import default_search_settings
+import default_settings
 
 database_url = "sqlite:///web.db"
 
@@ -50,10 +50,10 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 default_page = PageCreate(
-    url=default_search_settings.starting_url,
+    url=default_settings.default_search_settings.starting_url,
     title="",
     added=datetime.now(),
-    content=default_search_settings.starting_content,
+    content=default_settings.default_search_settings.starting_content,
 )
 # The line `default_page = Page(url=default_search_settings.starting_url, title='',
 # added=datetime.now())` is creating an instance of the `Page` class with specific attribute values.

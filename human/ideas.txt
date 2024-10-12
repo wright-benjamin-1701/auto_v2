@@ -1,0 +1,4 @@
+extract all tabular data into a dataframe in a dask job
+
+for each field in the table, assume it could be plural and make multiple rows
+normalize key mappings for the table

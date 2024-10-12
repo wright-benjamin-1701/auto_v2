@@ -1,5 +1,5 @@
 from datetime import datetime
-from models import Page, PageCreate, PageUpdate
+from models import Page, PageCreate
 from sqlmodel import Session
 
 
