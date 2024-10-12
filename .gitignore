@@ -399,4 +399,5 @@ FodyWeavers.xsd
 
 # Custom
 *.db
+*.db-journal
 *eda.ipynb
