@@ -4,7 +4,7 @@ from throttler import Throttler
 import time
 import crud
 from services.web_services import fetch_page
-import default_settings
+import settings
 import services.database_services
 import models
 import core.soup_processing
@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 
 # processes a batch of pages of the same depth in a breadth-first web crawling algorithm
 async def process_batch(
-    throttler: Throttler, settings=default_settings.default_search_settings
+    throttler: Throttler, settings=settings.default_search_settings
 ):
     t = time.time()
 
@@ -71,15 +71,15 @@ async def process_batch(
 async def main():
 
     throttler = Throttler(
-        default_settings.default_search_settings.request_throttle_limit[0]
+        settings.default_search_settings.request_throttle_limit[0]
     )  # throttle network requests - wikipedia allows web crawling at small, slow scales
     async with aiohttp.ClientSession() as session:
 
-        for i in range(2):
+        for i in range(0):
             await process_batch(
-                throttler=throttler, settings=default_settings.default_search_settings
+                throttler=throttler, settings=settings.default_search_settings
             )
-
+    print()
 
 if __name__ == "__main__":
     asyncio.run(main())

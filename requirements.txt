@@ -1,0 +1,6 @@
+asyncio
+aiohttp
+throttler
+bs4
+sqlmodel
+sqlalchemy

@@ -400,4 +400,4 @@ FodyWeavers.xsd
 # Custom
 *.db
 *.db-journal
-*eda.ipynb
+*two_eda.ipynb

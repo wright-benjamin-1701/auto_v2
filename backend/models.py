@@ -10,7 +10,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import default_settings
+import settings
 
 database_url = "sqlite:///crawl.db"
 
@@ -51,9 +51,9 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 default_page = PageCreate(
-    url=default_settings.default_search_settings.starting_url,
+    url=settings.default_search_settings.starting_url,
     added=datetime.now(),
-    content=default_settings.default_search_settings.starting_content,
+    content=settings.default_search_settings.starting_content,
 )
 
 try:
