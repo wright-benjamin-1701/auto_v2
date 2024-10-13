@@ -1,7 +1,7 @@
 import requests
 
 default_settings = {
-    'starting_url':'https://en.wikipedia.org/wiki/List_of_jazz_albums',# If you modify this,
+    'starting_url': 'https://en.wikipedia.org/wiki/List_of_science_fiction_novels', #'https://en.wikipedia.org/wiki/List_of_jazz_albums',# If you modify this,
     # make sure to respect the robots.txt file on the sites you visit
     'internal_links_only' : True, #whether to filter out links not from the same domain. If you turn this off,
     # make sure to modify the code to respect the robots.txt file on the sites you visit

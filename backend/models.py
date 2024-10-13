@@ -12,7 +12,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import settings
 
-database_url = "sqlite:///crawl.db"
+database_url = "sqlite:///scifi.db"
 
 engine = create_engine(database_url)
 
