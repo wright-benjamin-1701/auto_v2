@@ -76,7 +76,7 @@ async def main():
     )  # throttle network requests - wikipedia allows web crawling at small, slow scales
     async with aiohttp.ClientSession() as session:
 
-        for i in range(3):
+        for i in range(5):
             await process_batch(
                 throttler=throttler, settings=settings.default_search_settings
             )
