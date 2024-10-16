@@ -5,14 +5,13 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
-    ForeignKey,
     DateTime,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import settings
 
-database_url = "sqlite:///scifi.db"
+database_url = "postgresql://postgres:changethis@localhost/benwright"
 
 engine = create_engine(database_url)
 
@@ -31,8 +30,8 @@ class Page(Base):
 class Link(Base):
     __tablename__ = "links"
     id = Column("id", Integer(), primary_key=True, autoincrement=True)
-    source = Column("source", ForeignKey(Page.url))
-    destination = Column("destination", ForeignKey(Page.url))
+    source = Column("source", String())
+    destination = Column("destination", String())
 
 
 class PageCreate(Page):

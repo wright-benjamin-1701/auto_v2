@@ -9,6 +9,7 @@ import services.database_services
 import models
 import core.soup_processing
 from urllib.parse import urlparse
+from datetime import datetime
 
 
 # processes a batch of pages of the same depth in a breadth-first web crawling algorithm
