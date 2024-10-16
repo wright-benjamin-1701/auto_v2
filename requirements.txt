@@ -4,3 +4,4 @@ throttler
 bs4
 sqlmodel
 sqlalchemy
+python-dotenv

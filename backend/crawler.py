@@ -72,11 +72,11 @@ async def process_batch(
 async def main():
 
     throttler = Throttler(
-        settings.default_search_settings.request_throttle_limit[0]
+        settings.default_search_settings.request_throttle_limit
     )  # throttle network requests - wikipedia allows web crawling at small, slow scales
     async with aiohttp.ClientSession() as session:
 
-        for i in range(5):
+        for i in range(settings.default_search_settings.number_of_batches):
             await process_batch(
                 throttler=throttler, settings=settings.default_search_settings
             )
