@@ -11,7 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import settings
 
-database_url = "postgresql://postgres:changethis@localhost/benwright"
+database_url = settings.database_url
 
 engine = create_engine(database_url)
 

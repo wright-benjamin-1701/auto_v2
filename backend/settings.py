@@ -6,10 +6,12 @@ default_settings = {
     'internal_links_only' : True, #whether to filter out links not from the same domain. If you turn this off,
     # make sure to modify the code to respect the robots.txt file on the sites you visit
     'request_throttle_limit':(10000,1), #requests per period
-    'batch_size':5, 
+    'batch_size':25, 
 }
 
 starting_content = requests.get(default_settings['starting_url']).text
+database_url = 'postgresql://postgres:changethis@localhost/benwright'
+
 
 class SearchSettings():
     def __init__(self, **kwargs):
