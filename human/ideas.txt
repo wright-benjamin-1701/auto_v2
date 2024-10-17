@@ -2,3 +2,13 @@ extract all tabular data into a dataframe in a dask job
 
 for each field in the table, assume it could be plural and make multiple rows
 normalize key mappings for the table
+
+
+
+left df2.url on links df.source (only want links comming from source) as dfm
+
+left join albums df url on dfm.destination as count_df 
+- select [source] coloumn, group by source, count and set into albums_df['rank']
+
+add the centroids of the kmeans and visualize them as a bar graph
+strip out irrelevant html tags from tfidf dictionary via .text - compare with the pca variables how did i get rid of them in the corpus befor
