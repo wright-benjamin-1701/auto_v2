@@ -40,3 +40,10 @@ def create_link(*,session:Session,link_create:LinkCreate)-> Link:
     session.refresh(link_create)
 
     return link_create
+
+def read_pages(*,session:Session):
+
+    url_response = session.query(Page.url).all()
+    urls = [item for sublist in url_response for item in sublist]
+    
+    return urls

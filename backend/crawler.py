@@ -41,9 +41,11 @@ async def process_batch(
             link = models.LinkCreate(source=page.url,destination=url)
             crud.create_link(session=db_session,link_create=link)
 
+        already_fetched_urls = crud.read_pages(session=db_session)
+
         db_session.close()
 
-        fetch_urls = list(set(fetch_urls))
+        fetch_urls = list(set(fetch_urls)-set(already_fetched_urls))
 
         tasks = []
         print(f"fetching {len(fetch_urls)} pages")
